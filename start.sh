@@ -1,0 +1,78 @@
+#!/bin/bash
+
+echo "🚀 Starting TTS Project..."
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Function to check if port is in use
+check_port() {
+    if lsof -Pi :$1 -sTCP:LISTEN -t >/dev/null ; then
+        echo -e "${RED}❌ Port $1 is already in use${NC}"
+        return 1
+    else
+        echo -e "${GREEN}✅ Port $1 is available${NC}"
+        return 0
+    fi
+}
+
+# Check ports
+echo -e "${BLUE}🔍 Checking ports...${NC}"
+check_port 8000
+check_port 3000
+
+# Kill existing processes if needed
+echo -e "${YELLOW}🧹 Cleaning up existing processes...${NC}"
+lsof -ti:8000 | xargs kill -9 2>/dev/null || true
+lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+
+# Wait a moment
+sleep 2
+
+# Start Backend
+echo -e "${BLUE}📡 Starting Backend API...${NC}"
+cd english-tts-api
+source venv/bin/activate
+python main_simple.py &
+BACKEND_PID=$!
+
+# Wait for backend to start
+echo -e "${YELLOW}⏳ Waiting for backend to start...${NC}"
+sleep 5
+
+# Check if backend is running
+if curl -s http://localhost:8000/ > /dev/null; then
+    echo -e "${GREEN}✅ Backend started successfully${NC}"
+else
+    echo -e "${RED}❌ Backend failed to start${NC}"
+    kill $BACKEND_PID 2>/dev/null
+    exit 1
+fi
+
+# Start Frontend
+echo -e "${BLUE}🌐 Starting Frontend...${NC}"
+cd ../tts-frontend
+npm start &
+FRONTEND_PID=$!
+
+# Wait for frontend to start
+echo -e "${YELLOW}⏳ Waiting for frontend to start...${NC}"
+sleep 10
+
+echo -e "${GREEN}🎉 TTS Project started successfully!${NC}"
+echo -e "${BLUE}📊 Service Information:${NC}"
+echo -e "   Backend PID: ${GREEN}$BACKEND_PID${NC}"
+echo -e "   Frontend PID: ${GREEN}$FRONTEND_PID${NC}"
+echo -e "   Frontend URL: ${GREEN}http://localhost:3000${NC}"
+echo -e "   Backend URL: ${GREEN}http://localhost:8000${NC}"
+echo -e "   API Docs: ${GREEN}http://localhost:8000/docs${NC}"
+echo ""
+echo -e "${YELLOW}💡 To stop the project, run: ./stop.sh${NC}"
+echo -e "${YELLOW}💡 Or press Ctrl+C in this terminal${NC}"
+
+# Keep script running
+wait
