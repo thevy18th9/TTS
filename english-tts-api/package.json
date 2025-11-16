@@ -1,0 +1,23 @@
+{
+  "name": "english-tts-api",
+  "version": "1.0.0",
+  "description": "A FastAPI-based REST API for converting English text to speech using Coqui-TTS. This API provides a simple interface to synthesize speech from text input and returns the generated audio file.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "google-tts-api": "^2.0.2",
+    "jsdom": "^27.1.0",
+    "rss-parser": "^3.13.0",
+    "xml2js": "^0.6.2"
+  }
+}

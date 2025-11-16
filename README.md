@@ -4,6 +4,13 @@ A complete web application for converting text to speech in multiple languages u
 
 ## ✨ Features
 
+### 🎤 **NEW: Voice Search & News Reading**
+- 🎯 **Speech-to-Text** - Voice recognition in multiple languages
+- 🔍 **Smart News Search** - Automatic news search based on voice input
+- 📰 **Real-time News** - Fetch latest news from multiple sources
+- 🔊 **Auto TTS** - Automatically read found news to user
+- ⌨️ **Keyboard Shortcuts** - Ctrl+M for voice search
+
 ### 🌍 **Multi-Language Support**
 - 🇺🇸 **English** - Natural English speech
 - 🇻🇳 **Tiếng Việt** - Vietnamese speech with proper pronunciation
@@ -21,6 +28,7 @@ A complete web application for converting text to speech in multiple languages u
 - 💾 **Easy Download** - Save audio as MP3 files
 - 📱 **Responsive Design** - Works on desktop and mobile
 - 🌐 **Bilingual UI** - Interface adapts to selected language
+- ♿ **Accessibility** - Voice search for visually impaired users
 
 ## 🏗️ Project Structure
 
@@ -45,8 +53,9 @@ TTS/
 - Python 3.10+
 - Node.js 16+
 - npm or yarn
+- Microphone (for voice search)
 
-### 1. Backend Setup (FastAPI + Google TTS)
+### 1. Backend Setup (News TTS API with Voice Search)
 
 ```bash
 # Navigate to backend directory
@@ -64,8 +73,11 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the server
-python main_simple.py
+# Run the news TTS server with voice search
+python main_news.py
+
+# OR use the convenient script
+../start_news.sh
 ```
 
 The API will be available at `http://localhost:8000`
@@ -85,6 +97,31 @@ npm start
 
 The frontend will be available at `http://localhost:3000`
 
+## 🎤 Voice Search Usage
+
+### How to Use Voice Search
+1. **Open the app** in your browser
+2. **Click "Start Voice Search"** button (or press Ctrl+M)
+3. **Speak your query** (e.g., "Đọc tin tức thể thao")
+4. **System will automatically**:
+   - Convert speech to text
+   - Search for relevant news
+   - Read the news to you
+
+### Example Voice Commands
+- 🏆 **Sports**: "Đọc tin tức thể thao", "Sports news"
+- 💰 **Economy**: "Tin tức kinh tế", "Economy news"  
+- 💻 **Technology**: "Tin tức công nghệ", "AI news"
+- 🎓 **Education**: "Tin tức giáo dục", "Education"
+- 🏥 **Health**: "Tin tức y tế", "Health news"
+- 📰 **General**: "Tin tức tổng hợp", "News today"
+
+### Browser Requirements
+- ✅ Chrome (recommended)
+- ✅ Edge
+- ✅ Safari (iOS 14.5+)
+- ❌ Firefox (limited support)
+
 ## 📖 API Documentation
 
 ### Endpoints
@@ -96,9 +133,22 @@ The frontend will be available at `http://localhost:3000`
 #### Text-to-Speech Synthesis
 - **POST** `/synthesize` - Convert text to speech
 - **Parameters**:
-  - `text` (string): Text to convert (max 200 characters)
+  - `text` (string): Text to convert (max 2000 characters)
   - `language` (string): Language code (en, vi, ja, ko, zh, fr, de, es)
-- **Response**: Audio file (MP3 format)
+  - `voice_model` (string): Voice model to use
+- **Response**: Audio file (WAV format)
+
+#### News Search
+- **POST** `/search-news` - Search for news articles
+- **Parameters**:
+  - `query` (string): Search query
+  - `language` (string): Language preference (vi, en)
+  - `max_articles` (int): Maximum articles to return
+- **Response**: JSON with news text
+
+#### News Sources
+- **GET** `/news-sources` - Get available news sources
+- **Response**: JSON with available news sources
 
 ### Example Usage
 
