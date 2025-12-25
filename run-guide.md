@@ -268,4 +268,3 @@ cd ../tts-frontend && npm start &
 
 ---
 
-**🎉 Chúc bạn sử dụng dự án thành công!**

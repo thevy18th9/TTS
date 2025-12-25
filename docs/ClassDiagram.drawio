@@ -1,0 +1,500 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="5.0" version="21.0.0" etag="drawio-class" type="device">
+  <diagram name="Class Diagram" id="class-diagram">
+    <mxGraphModel dx="2000" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3000" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- PACKAGE: Frontend -->
+        <mxCell id="package-frontend" value="Frontend (React)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;align=center;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="800" height="900" as="geometry" />
+        </mxCell>
+        
+        <!-- App Component -->
+        <mxCell id="class-app" value="App" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="50" width="760" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="app-props" value="Props:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-app">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="app-state" value="State:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-app">
+          <mxGeometry x="10" y="50" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="app-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-app">
+          <mxGeometry x="10" y="70" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="app-method1" value="+ handleKeyPress(event: KeyboardEvent): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="class-app">
+          <mxGeometry x="20" y="90" width="740" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Header Component -->
+        <mxCell id="class-header" value="Header" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="190" width="760" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="header-props" value="Props:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-header">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="header-prop1" value="+ darkMode: boolean&#xa;+ language: string&#xa;+ searchQuery: string&#xa;+ isListening: boolean&#xa;+ isSearching: boolean&#xa;+ setDarkMode(dark: boolean): void&#xa;+ setLanguage(lang: string): void&#xa;+ setSearchQuery(query: string): void&#xa;+ onToggleListening(): void&#xa;+ onSearch(): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-header">
+          <mxGeometry x="20" y="50" width="740" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Sidebar Component -->
+        <mxCell id="class-sidebar" value="Sidebar" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="310" width="760" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sidebar-props" value="Props:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-sidebar">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sidebar-prop1" value="+ open: boolean&#xa;+ darkMode: boolean&#xa;+ isListening: boolean&#xa;+ sttText: string&#xa;+ ttsText: string&#xa;+ selectedVoice: string&#xa;+ ttsRate: number&#xa;+ ttsPitch: number&#xa;+ history: HistoryItem[]&#xa;+ audioState: AudioState&#xa;+ onToggleListening(): void&#xa;+ onTTS(): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-sidebar">
+          <mxGeometry x="20" y="50" width="740" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- NewsGrid Component -->
+        <mxCell id="class-newsgrid" value="NewsGrid" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="450" width="760" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="newsgrid-props" value="Props:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-newsgrid">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="newsgrid-prop1" value="+ darkMode: boolean&#xa;+ searchQuery: string&#xa;+ news: NewsArticle[]&#xa;+ isSearching: boolean&#xa;+ audioState: AudioState&#xa;+ onSearch(): void&#xa;+ onListen(article: NewsArticle): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-newsgrid">
+          <mxGeometry x="20" y="50" width="740" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- AudioPlayer Component -->
+        <mxCell id="class-audioplayer" value="AudioPlayer" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="570" width="760" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="audioplayer-props" value="Props:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-audioplayer">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="audioplayer-prop1" value="+ darkMode: boolean&#xa;+ audioState: AudioState&#xa;+ onTogglePlayPause(): void&#xa;+ onStop(): void&#xa;+ onClose(): void&#xa;+ onNext(): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-audioplayer">
+          <mxGeometry x="20" y="50" width="740" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- AccessibilityPanel Component -->
+        <mxCell id="class-accessibility" value="AccessibilityPanel" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="690" width="760" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="accessibility-props" value="Props:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-accessibility">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="accessibility-prop1" value="+ open: boolean&#xa;+ darkMode: boolean&#xa;+ screenReaderMode: boolean&#xa;+ soundCues: boolean&#xa;+ largeTextMode: boolean&#xa;+ showShortcuts: boolean&#xa;+ setScreenReaderMode(enabled: boolean): void&#xa;+ setSoundCues(enabled: boolean): void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-accessibility">
+          <mxGeometry x="20" y="50" width="740" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- useSmartNewsReader Hook -->
+        <mxCell id="class-hook" value="useSmartNewsReader" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="810" width="760" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="hook-state" value="State:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-hook">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hook-state1" value="+ darkMode, language, sidebarOpen&#xa;+ searchQuery, isSearching, isListening&#xa;+ news: NewsArticle[], audioState: AudioState&#xa;+ ttsText, selectedVoice, ttsRate, ttsPitch&#xa;+ history: HistoryItem[]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-hook">
+          <mxGeometry x="20" y="50" width="740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hook-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-hook">
+          <mxGeometry x="10" y="60" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hook-method1" value="+ handleSearch(query: string): Promise&lt;void&gt;&#xa;+ handleListen(article: NewsArticle): Promise&lt;void&gt;&#xa;+ toggleListening(): void&#xa;+ handleTTS(): Promise&lt;void&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-hook">
+          <mxGeometry x="20" y="80" width="740" height="0" as="geometry" />
+        </mxCell>
+        
+        <!-- APIService Class -->
+        <mxCell id="class-apiser vice" value="APIService" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-frontend">
+          <mxGeometry x="20" y="910" width="760" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="apiservice-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-apiser vice">
+          <mxGeometry x="10" y="30" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apiservice-attr1" value="- baseURL: string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="class-apiser vice">
+          <mxGeometry x="20" y="50" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apiservice-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-apiser vice">
+          <mxGeometry x="10" y="70" width="740" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="apiservice-method1" value="+ getTrendingNews(language: string, limit: number): Promise&lt;SearchResponse&gt;&#xa;+ searchNews(request: SearchRequest): Promise&lt;SearchResponse&gt;&#xa;+ synthesizeSpeech(request: TTSRequest): Promise&lt;Blob&gt;&#xa;+ recognizeSpeech(request: STTRequest): Promise&lt;STTResponse&gt;&#xa;+ getVoices(): Promise&lt;VoiceOption[]&gt;&#xa;+ getHistory(): Promise&lt;HistoryItem[]&gt;&#xa;+ saveToHistory(item: HistoryItem): Promise&lt;void&gt;&#xa;+ healthCheck(): Promise&lt;boolean&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-apiser vice">
+          <mxGeometry x="20" y="90" width="740" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- PACKAGE: Backend -->
+        <mxCell id="package-backend" value="Backend (Express.js)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;align=center;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="900" y="50" width="700" height="600" as="geometry" />
+        </mxCell>
+        
+        <!-- ExpressServer Class -->
+        <mxCell id="class-expressserver" value="ExpressServer" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-backend">
+          <mxGeometry x="20" y="50" width="660" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="expressserver-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-expressserver">
+          <mxGeometry x="10" y="30" width="640" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="expressserver-attr1" value="- app: Express&#xa;- PORT: number = 8004&#xa;- NEWS_API_KEY: string&#xa;- NEWS_API_BASE_URL: string&#xa;- LANGUAGE_MAPPING: object" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-expressserver">
+          <mxGeometry x="20" y="50" width="640" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="expressserver-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-expressserver">
+          <mxGeometry x="10" y="100" width="640" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="expressserver-method1" value="+ GET /health(): JSON&#xa;+ POST /search-news(req, res): Promise&lt;void&gt;&#xa;+ POST /synthesize(req, res): Promise&lt;void&gt;&#xa;+ GET /fetch-article-clean(req, res): Promise&lt;void&gt;&#xa;+ GET /trending-news(req, res): Promise&lt;void&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-expressserver">
+          <mxGeometry x="20" y="120" width="640" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- ArticleCleaner Module -->
+        <mxCell id="class-articlecleaner" value="ArticleCleaner" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-backend">
+          <mxGeometry x="20" y="210" width="660" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="articlecleaner-const" value="Constants:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-articlecleaner">
+          <mxGeometry x="10" y="30" width="640" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="articlecleaner-const1" value="- USER_AGENT: string&#xa;- JUNK_KEYWORDS: string[]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-articlecleaner">
+          <mxGeometry x="20" y="50" width="640" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="articlecleaner-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-articlecleaner">
+          <mxGeometry x="10" y="80" width="640" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="articlecleaner-method1" value="+ getCleanArticleForTTS(url: string): Promise&lt;Article&gt;&#xa;+ extractMainContent(url: string): Promise&lt;Article&gt;&#xa;+ cleanText(text: string): string&#xa;+ cleanParagraphs(paragraphs: string[]): string[]&#xa;+ prepareSpeechText(article: Article): string&#xa;+ cleanAndPrepareText(title: string, content: string): string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-articlecleaner">
+          <mxGeometry x="20" y="100" width="640" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- NewsService Class -->
+        <mxCell id="class-newsservice" value="NewsService" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-backend">
+          <mxGeometry x="20" y="410" width="660" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="newsservice-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-newsservice">
+          <mxGeometry x="10" y="30" width="640" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="newsservice-method1" value="+ searchNews(query: string, language: string, limit: number): Promise&lt;Article[]&gt;&#xa;+ fetchFromNewsAPI(query: string, language: string, size: number): Promise&lt;Article[]&gt;&#xa;+ calculateRelevanceScore(article: Article, query: string): number&#xa;+ deduplicateArticles(articles: Article[]): Article[]&#xa;+ normalizeText(text: string): string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-newsservice">
+          <mxGeometry x="20" y="50" width="640" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- TTSService Class -->
+        <mxCell id="class-ttsservice" value="TTSService" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-backend">
+          <mxGeometry x="20" y="530" width="660" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ttsservice-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-ttsservice">
+          <mxGeometry x="10" y="30" width="640" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ttsservice-method1" value="+ synthesize(text: string, voice: string, language: string): Promise&lt;Blob&gt;&#xa;+ splitTextIntoChunks(text: string, chunkSize: number): string[]&#xa;+ generateAudioChunks(chunks: string[], language: string): Promise&lt;Blob[]&gt;&#xa;+ concatenateAudioChunks(chunks: Blob[]): Promise&lt;Blob&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-ttsservice">
+          <mxGeometry x="20" y="50" width="640" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- PACKAGE: Data Models -->
+        <mxCell id="package-models" value="Data Models" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=14;align=center;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="50" width="600" height="900" as="geometry" />
+        </mxCell>
+        
+        <!-- NewsArticle Interface -->
+        <mxCell id="class-newsarticle" value="&lt;&lt;interface&gt;&gt;&#xa;NewsArticle" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="50" width="560" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="newsarticle-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-newsarticle">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="newsarticle-attr1" value="+ id: string&#xa;+ title: string&#xa;+ description: string&#xa;+ image: string&#xa;+ source: string&#xa;+ published: string&#xa;+ url: string&#xa;+ language: string&#xa;+ category?: string&#xa;+ content?: string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-newsarticle">
+          <mxGeometry x="20" y="50" width="540" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- AudioState Interface -->
+        <mxCell id="class-audiostate" value="&lt;&lt;interface&gt;&gt;&#xa;AudioState" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="170" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="audiostate-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-audiostate">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="audiostate-attr1" value="+ isPlaying: boolean&#xa;+ isGenerating: boolean&#xa;+ currentArticle?: NewsArticle&#xa;+ progress: number&#xa;+ duration: number" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-audiostate">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- SearchRequest Interface -->
+        <mxCell id="class-searchrequest" value="&lt;&lt;interface&gt;&gt;&#xa;SearchRequest" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="270" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="searchrequest-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-searchrequest">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="searchrequest-attr1" value="+ query: string&#xa;+ language: string&#xa;+ real_time?: boolean&#xa;+ max_articles?: number" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-searchrequest">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- SearchResponse Interface -->
+        <mxCell id="class-searchresponse" value="&lt;&lt;interface&gt;&gt;&#xa;SearchResponse" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="370" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="searchresponse-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-searchresponse">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="searchresponse-attr1" value="+ articles: NewsArticle[]&#xa;+ total: number&#xa;+ query: string&#xa;+ timestamp: string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-searchresponse">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- TTSRequest Interface -->
+        <mxCell id="class-ttsrequest" value="&lt;&lt;interface&gt;&gt;&#xa;TTSRequest" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="470" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ttsrequest-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-ttsrequest">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ttsrequest-attr1" value="+ text: string&#xa;+ language: string&#xa;+ voice_model: string&#xa;+ speed?: number&#xa;+ pitch?: number" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-ttsrequest">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- HistoryItem Interface -->
+        <mxCell id="class-historyitem" value="&lt;&lt;interface&gt;&gt;&#xa;HistoryItem" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="570" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="historyitem-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-historyitem">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="historyitem-attr1" value="+ id: string&#xa;+ query: string&#xa;+ articles: NewsArticle[]&#xa;+ timestamp: string&#xa;+ language: string&#xa;+ duration?: number" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-historyitem">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- VoiceOption Interface -->
+        <mxCell id="class-voiceoption" value="&lt;&lt;interface&gt;&gt;&#xa;VoiceOption" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="670" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="voiceoption-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-voiceoption">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="voiceoption-attr1" value="+ id: string&#xa;+ name: string&#xa;+ language: string&#xa;+ gender: 'male' | 'female'&#xa;+ sample_url?: string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-voiceoption">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Article Interface (for ArticleCleaner) -->
+        <mxCell id="class-article" value="&lt;&lt;interface&gt;&gt;&#xa;Article" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=2;fontSize=12;align=center;startSize=25;" vertex="1" parent="package-models">
+          <mxGeometry x="20" y="770" width="560" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="article-attr" value="Attributes:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-article">
+          <mxGeometry x="10" y="30" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="article-attr1" value="+ title: string&#xa;+ content: string&#xa;+ ttsText?: string&#xa;+ speechText?: string&#xa;+ contentLength?: number&#xa;+ error?: string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-article">
+          <mxGeometry x="20" y="50" width="540" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- External Systems -->
+        <mxCell id="class-newsapi" value="NewsData.io API&#xa;(External)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="50" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="newsapi-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-newsapi">
+          <mxGeometry x="10" y="30" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="newsapi-method1" value="+ GET /api/1/news(query, language, size): Article[]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-newsapi">
+          <mxGeometry x="20" y="50" width="180" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="class-googletts" value="Google TTS API&#xa;(External)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="150" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="googletts-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-googletts">
+          <mxGeometry x="10" y="30" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="googletts-method1" value="+ getAudioUrl(text, lang): string&#xa;+ synthesize(text, lang): Blob" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-googletts">
+          <mxGeometry x="20" y="50" width="180" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="class-webspeech" value="Web Speech API&#xa;(External)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;align=center;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="250" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="webspeech-methods" value="Methods:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=2;fontSize=10;" vertex="1" parent="class-webspeech">
+          <mxGeometry x="10" y="30" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="webspeech-method1" value="+ SpeechRecognition()&#xa;+ recognition.start()&#xa;+ recognition.onresult: callback" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="class-webspeech">
+          <mxGeometry x="20" y="50" width="180" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- RELATIONSHIPS -->
+        
+        <!-- App uses Components -->
+        <mxCell id="rel-app-header" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#000000;dashed=1;" edge="1" parent="1" source="class-app" target="class-header">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-app-sidebar" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#000000;dashed=1;" edge="1" parent="1" source="class-app" target="class-sidebar">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-app-newsgrid" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#000000;dashed=1;" edge="1" parent="1" source="class-app" target="class-newsgrid">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-app-audioplayer" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#000000;dashed=1;" edge="1" parent="1" source="class-app" target="class-audioplayer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-app-accessibility" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#000000;dashed=1;" edge="1" parent="1" source="class-app" target="class-accessibility">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- App uses Hook -->
+        <mxCell id="rel-app-hook" value="uses" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="class-app" target="class-hook">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Hook uses APIService -->
+        <mxCell id="rel-hook-api" value="uses" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="class-hook" target="class-apiser vice">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="200" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Components use Interfaces -->
+        <mxCell id="rel-newsgrid-newsarticle" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-newsgrid" target="class-newsarticle">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="500" as="sourcePoint" />
+            <mxPoint x="1650" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-audioplayer-audiostate" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-audioplayer" target="class-audiostate">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="620" as="sourcePoint" />
+            <mxPoint x="1650" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-audiostate-newsarticle" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-audiostate" target="class-newsarticle">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1930" y="250" as="sourcePoint" />
+            <mxPoint x="1930" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-hook-newsarticle" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-hook" target="class-newsarticle">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="850" as="sourcePoint" />
+            <mxPoint x="1650" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-hook-audiostate" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-hook" target="class-audiostate">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="850" as="sourcePoint" />
+            <mxPoint x="1650" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-hook-historyitem" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-hook" target="class-historyitem">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="850" as="sourcePoint" />
+            <mxPoint x="1650" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- APIService uses Interfaces -->
+        <mxCell id="rel-api-searchrequest" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-apiser vice" target="class-searchrequest">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="980" as="sourcePoint" />
+            <mxPoint x="1650" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-api-searchresponse" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-apiser vice" target="class-searchresponse">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="980" as="sourcePoint" />
+            <mxPoint x="1650" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-api-ttsrequest" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-apiser vice" target="class-ttsrequest">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="980" as="sourcePoint" />
+            <mxPoint x="1650" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-api-voiceoption" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-apiser vice" target="class-voiceoption">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="980" as="sourcePoint" />
+            <mxPoint x="1650" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Backend Relationships -->
+        <mxCell id="rel-express-articlecleaner" value="uses" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d79b00;dashed=1;" edge="1" parent="1" source="class-expressserver" target="class-articlecleaner">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1230" y="190" as="sourcePoint" />
+            <mxPoint x="1230" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-express-newsservice" value="uses" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#82b366;dashed=1;" edge="1" parent="1" source="class-expressserver" target="class-newsservice">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1230" y="190" as="sourcePoint" />
+            <mxPoint x="1230" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-express-ttsservice" value="uses" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#82b366;dashed=1;" edge="1" parent="1" source="class-expressserver" target="class-ttsservice">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1230" y="190" as="sourcePoint" />
+            <mxPoint x="1230" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-articlecleaner-article" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-articlecleaner" target="class-article">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="300" as="sourcePoint" />
+            <mxPoint x="1650" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-newsservice-newsarticle" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-newsservice" target="class-newsarticle">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="460" as="sourcePoint" />
+            <mxPoint x="1650" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Backend to External APIs -->
+        <mxCell id="rel-express-newsapi" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-expressserver" target="class-newsapi">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="120" as="sourcePoint" />
+            <mxPoint x="2300" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel-ttsservice-googletts" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-ttsservice" target="class-googletts">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="580" as="sourcePoint" />
+            <mxPoint x="2300" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Frontend to External APIs -->
+        <mxCell id="rel-hook-webspeech" value="" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-hook" target="class-webspeech">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="850" as="sourcePoint" />
+            <mxPoint x="2300" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- APIService to Backend -->
+        <mxCell id="rel-api-express" value="calls" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#82b366;dashed=1;" edge="1" parent="1" source="class-apiser vice" target="class-expressserver">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="980" as="sourcePoint" />
+            <mxPoint x="900" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- SearchResponse contains NewsArticle -->
+        <mxCell id="rel-searchresponse-newsarticle" value="contains" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-searchresponse" target="class-newsarticle">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1930" y="410" as="sourcePoint" />
+            <mxPoint x="1930" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- HistoryItem contains NewsArticle -->
+        <mxCell id="rel-historyitem-newsarticle" value="contains" style="endArrow=open;endSize=8;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;dashed=1;" edge="1" parent="1" source="class-historyitem" target="class-newsarticle">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1930" y="620" as="sourcePoint" />
+            <mxPoint x="1930" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

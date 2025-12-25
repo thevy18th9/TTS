@@ -8,6 +8,8 @@ from gtts import gTTS
 import tempfile
 import feedparser
 import re
+import hashlib
+import requests
 from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional, List
@@ -74,11 +76,16 @@ class NewsSearchRequest(BaseModel):
     max_articles: int = 5
 
 class NewsArticle(BaseModel):
+    id: str = ""
     title: str
     description: str
     link: str
     published: str
     source: str
+    image: str = ""
+    url: str = ""
+    language: str = "vi"
+    category: str = "General"
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -158,12 +165,33 @@ def fetch_news_from_rss(source_key: str, query: str = None) -> List[NewsArticle]
                 if not (query_lower in title.lower() or query_lower in description.lower()):
                     continue
             
+            # Generate ID from title and link
+            article_id = hashlib.md5(f"{title}{link}".encode()).hexdigest()[:12]
+            
+            # Extract image from description or use default
+            image_url = "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=400&h=250&fit=crop"
+            if hasattr(entry, 'media_content') and entry.media_content:
+                image_url = entry.media_content[0].get('url', image_url)
+            elif 'image' in entry:
+                image_url = entry.image.get('href', image_url)
+            else:
+                # Try to extract from description HTML
+                import re
+                img_match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', description)
+                if img_match:
+                    image_url = img_match.group(1)
+            
             article = NewsArticle(
+                id=article_id,
                 title=title,
-                description=description,
+                description=re.sub(r'<[^>]+>', '', description),  # Remove HTML tags
                 link=link,
                 published=published,
-                source=source['name']
+                source=source['name'],
+                image=image_url,
+                url=link,
+                language=source['language'],
+                category="General"
             )
             articles.append(article)
             
@@ -381,16 +409,128 @@ async def search_news(request: NewsSearchRequest):
         # Auto-detect language from query
         detected_language = detect_language(request.query)
         
-        news_text = search_news_by_keywords(request.query, detected_language)
+        # Get articles from RSS feeds
+        query_lower = request.query.lower()
+        all_articles = []
+        sources = ['vnexpress', 'tuoitre', 'thanhnien', 'dantri', 'vietnamnet']
+        
+        # Try to find articles matching the query
+        for source in sources:
+            try:
+                articles = fetch_news_from_rss(source, request.query)
+                # Filter by query if provided
+                if request.query:
+                    filtered = [a for a in articles if (
+                        query_lower in a.title.lower() or 
+                        query_lower in a.description.lower() or
+                        any(kw in a.title.lower() or kw in a.description.lower() 
+                            for kw in query_lower.split() if len(kw) > 2)
+                    )]
+                    all_articles.extend(filtered)
+                else:
+                    all_articles.extend(articles[:2])
+            except Exception as e:
+                logger.warning(f"Error fetching from {source}: {e}")
+        
+        # If no articles found, get latest from all sources
+        if not all_articles:
+            for source in sources:
+                try:
+                    articles = fetch_news_from_rss(source)
+                    all_articles.extend(articles[:2])
+                except Exception as e:
+                    logger.warning(f"Error getting latest from {source}: {e}")
+        
+        # Remove duplicates and limit
+        seen_titles = set()
+        unique_articles = []
+        for article in all_articles:
+            if article.title not in seen_titles and len(article.title) > 10:
+                seen_titles.add(article.title)
+                unique_articles.append(article)
+                max_articles = getattr(request, 'max_articles', 10)
+                if len(unique_articles) >= max_articles:
+                    break
+        
+        # Convert NewsArticle objects to dicts
+        articles_list = [
+            {
+                "id": article.id,
+                "title": article.title,
+                "description": article.description,
+                "image": article.image,
+                "source": article.source,
+                "published": article.published,
+                "url": article.url or article.link,
+                "language": article.language,
+                "category": article.category
+            }
+            for article in unique_articles
+        ]
+        
         return {
             "query": request.query,
-            "detected_language": detected_language,
-            "news_text": news_text,
+            "articles": articles_list,
+            "total": len(articles_list),
             "timestamp": datetime.now().isoformat()
         }
     except Exception as e:
         logger.error(f"Error searching news: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error searching news: {str(e)}")
+
+@app.get("/trending-news")
+async def get_trending_news(language: str = "vi", limit: int = 10):
+    """Get trending/hot news articles"""
+    try:
+        sources = ['vnexpress', 'tuoitre', 'thanhnien', 'dantri', 'vietnamnet'] if language == 'vi' else ['bbc', 'cnn', 'reuters', 'guardian']
+        all_articles = []
+        
+        for source in sources:
+            try:
+                articles = fetch_news_from_rss(source)
+                all_articles.extend(articles[:2])  # Get 2 latest from each source
+            except Exception as e:
+                logger.warning(f"Error fetching trending from {source}: {e}")
+        
+        # Remove duplicates
+        seen_titles = set()
+        unique_articles = []
+        for article in all_articles:
+            if article.title not in seen_titles and len(article.title) > 10:
+                seen_titles.add(article.title)
+                unique_articles.append(article)
+                if len(unique_articles) >= limit:
+                    break
+        
+        articles_list = [
+            {
+                "id": article.id,
+                "title": article.title,
+                "description": article.description,
+                "image": article.image,
+                "source": article.source,
+                "published": article.published,
+                "url": article.url or article.link,
+                "language": article.language,
+                "category": article.category
+            }
+            for article in unique_articles
+        ]
+        
+        return {
+            "articles": articles_list,
+            "total": len(articles_list),
+            "query": "trending",
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Error getting trending news: {str(e)}")
+        return {
+            "articles": [],
+            "total": 0,
+            "query": "trending",
+            "timestamp": datetime.now().isoformat()
+        }
 
 @app.get("/news-sources")
 async def get_news_sources():

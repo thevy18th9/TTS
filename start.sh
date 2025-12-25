@@ -1,6 +1,16 @@
 #!/bin/bash
 
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Change to project directory
+cd "$SCRIPT_DIR" || {
+    echo "❌ Error: Cannot change to project directory: $SCRIPT_DIR"
+    exit 1
+}
+
 echo "🚀 Starting TTS Project..."
+echo "📁 Project directory: $SCRIPT_DIR"
 
 # Colors for output
 RED='\033[0;31m'
@@ -22,22 +32,31 @@ check_port() {
 
 # Check ports
 echo -e "${BLUE}🔍 Checking ports...${NC}"
-check_port 8000
+check_port 8004
 check_port 3000
 
 # Kill existing processes if needed
 echo -e "${YELLOW}🧹 Cleaning up existing processes...${NC}"
-lsof -ti:8000 | xargs kill -9 2>/dev/null || true
+lsof -ti:8004 | xargs kill -9 2>/dev/null || true
 lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 
 # Wait a moment
 sleep 2
 
-# Start Backend
-echo -e "${BLUE}📡 Starting Backend API...${NC}"
-cd english-tts-api
-source venv/bin/activate
-python main_simple.py &
+# Start Backend (Node.js server on port 8004)
+echo -e "${BLUE}📡 Starting Backend API (Node.js)...${NC}"
+cd "$SCRIPT_DIR/english-tts-api" || {
+    echo -e "${RED}❌ Error: Cannot find english-tts-api directory${NC}"
+    exit 1
+}
+
+# Check if node_modules exists, if not install dependencies
+if [ ! -d "node_modules" ]; then
+    echo -e "${YELLOW}📦 Installing backend dependencies...${NC}"
+    npm install
+fi
+
+node server_web_tts.js &
 BACKEND_PID=$!
 
 # Wait for backend to start
@@ -45,7 +64,7 @@ echo -e "${YELLOW}⏳ Waiting for backend to start...${NC}"
 sleep 5
 
 # Check if backend is running
-if curl -s http://localhost:8000/ > /dev/null; then
+if curl -s http://localhost:8004/health > /dev/null; then
     echo -e "${GREEN}✅ Backend started successfully${NC}"
 else
     echo -e "${RED}❌ Backend failed to start${NC}"
@@ -55,7 +74,17 @@ fi
 
 # Start Frontend
 echo -e "${BLUE}🌐 Starting Frontend...${NC}"
-cd ../tts-frontend
+cd "$SCRIPT_DIR/tts-frontend" || {
+    echo -e "${RED}❌ Error: Cannot find tts-frontend directory${NC}"
+    exit 1
+}
+
+# Check if node_modules exists, if not install dependencies
+if [ ! -d "node_modules" ]; then
+    echo -e "${YELLOW}📦 Installing frontend dependencies...${NC}"
+    npm install
+fi
+
 npm start &
 FRONTEND_PID=$!
 
@@ -68,8 +97,8 @@ echo -e "${BLUE}📊 Service Information:${NC}"
 echo -e "   Backend PID: ${GREEN}$BACKEND_PID${NC}"
 echo -e "   Frontend PID: ${GREEN}$FRONTEND_PID${NC}"
 echo -e "   Frontend URL: ${GREEN}http://localhost:3000${NC}"
-echo -e "   Backend URL: ${GREEN}http://localhost:8000${NC}"
-echo -e "   API Docs: ${GREEN}http://localhost:8000/docs${NC}"
+echo -e "   Backend URL: ${GREEN}http://localhost:8004${NC}"
+echo -e "   Health Check: ${GREEN}http://localhost:8004/health${NC}"
 echo ""
 echo -e "${YELLOW}💡 To stop the project, run: ./stop.sh${NC}"
 echo -e "${YELLOW}💡 Or press Ctrl+C in this terminal${NC}"

@@ -34,7 +34,7 @@ kill_port() {
 }
 
 # Stop Backend
-kill_port 8000 "Backend API"
+kill_port 8004 "Backend API"
 
 # Stop Frontend  
 kill_port 3000 "Frontend Web"
@@ -42,10 +42,8 @@ kill_port 3000 "Frontend Web"
 # Additional cleanup
 echo -e "${YELLOW}🧹 Cleaning up any remaining processes...${NC}"
 
-# Kill any remaining python processes related to our project
-pkill -f "main_simple.py" 2>/dev/null || true
-
 # Kill any remaining node processes related to our project
+pkill -f "server_web_tts.js" 2>/dev/null || true
 pkill -f "react-scripts" 2>/dev/null || true
 
 # Wait a moment
@@ -53,10 +51,10 @@ sleep 2
 
 # Final check
 echo -e "${BLUE}🔍 Final status check...${NC}"
-if lsof -Pi :8000,3000 -sTCP:LISTEN -t >/dev/null ; then
+if lsof -Pi :8004,3000 -sTCP:LISTEN -t >/dev/null ; then
     echo -e "${RED}❌ Some services are still running${NC}"
     echo -e "${YELLOW}💡 You may need to manually kill them:${NC}"
-    echo -e "   lsof -ti:8000,3000 | xargs kill -9"
+    echo -e "   lsof -ti:8004,3000 | xargs kill -9"
     exit 1
 else
     echo -e "${GREEN}✅ All TTS services stopped successfully!${NC}"
