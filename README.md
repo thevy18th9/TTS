@@ -222,20 +222,6 @@ python-multipart==0.0.6
 @mui/icons-material
 axios
 ```
-
-## 🌐 Supported Languages
-
-| Language | Code | Flag | Example |
-|----------|------|------|---------|
-| English | `en` | 🇺🇸 | "Hello, how are you?" |
-| Tiếng Việt | `vi` | 🇻🇳 | "Xin chào, bạn khỏe không?" |
-| 日本語 | `ja` | 🇯🇵 | "こんにちは、元気ですか？" |
-| 한국어 | `ko` | 🇰🇷 | "안녕하세요, 어떻게 지내세요?" |
-| 中文 | `zh` | 🇨🇳 | "你好，你好吗？" |
-| Français | `fr` | 🇫🇷 | "Bonjour, comment allez-vous ?" |
-| Deutsch | `de` | 🇩🇪 | "Hallo, wie geht es dir?" |
-| Español | `es` | 🇪🇸 | "Hola, ¿cómo estás?" |
-
 ## 🔧 Configuration
 
 ### Environment Variables
