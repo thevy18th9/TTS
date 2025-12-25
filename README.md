@@ -14,12 +14,8 @@ A complete web application for converting text to speech in multiple languages u
 ### 🌍 **Multi-Language Support**
 - 🇺🇸 **English** - Natural English speech
 - 🇻🇳 **Tiếng Việt** - Vietnamese speech with proper pronunciation
-- 🇯🇵 **日本語** - Japanese speech synthesis
-- 🇰🇷 **한국어** - Korean speech generation
 - 🇨🇳 **中文** - Chinese text-to-speech
-- 🇫🇷 **Français** - French voice synthesis
-- 🇩🇪 **Deutsch** - German speech generation
-- 🇪🇸 **Español** - Spanish voice synthesis
+
 
 ### 🎯 **Key Features**
 - ⚡ **Fast Generation** - Google TTS for quick processing
